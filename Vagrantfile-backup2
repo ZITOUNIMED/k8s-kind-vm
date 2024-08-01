@@ -44,12 +44,17 @@ Vagrant.configure("2") do |config|
 		sudo mv ./kubectl /usr/local/bin/kubectl
 		kubectl version
 		
+		## create k8s cluster
+	
+		sudo kind create cluster --config=workspace/k8s-c1/config.yaml
+
 		# config kubectl 
 		mkdir -p ~/.kube
 		sudo cp /root/.kube/config ~/.kube/
 		sudo chown $(whoami):$(whoami) ~/.kube/config
 		chmod 600 ~/.kube/config
 		alias k=kubectl
+		k get nodes
 		
 		# Install helm
 		curl -LO "https://get.helm.sh/helm-v3.15.3-linux-amd64.tar.gz"
@@ -58,12 +63,6 @@ Vagrant.configure("2") do |config|
 		helm version
 		rm helm-v3.15.3-linux-amd64.tar.gz
 		rm -rf linux-amd64
-		
-		## create k8s cluster
-	
-		sudo kind create cluster --config=workspace/k8s-c1/config.yaml
-		
-		k get nodes
 		
 		# prometheus
 		kubectl create namespace monitoring
