@@ -65,11 +65,12 @@ Vagrant.configure("2") do |config|
 		rm -rf linux-amd64
 		
 		# prometheus
-		kubectl create namespace monitoring
 		helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 		helm repo update
 		cd workspace
 		helm pull prometheus-community/prometheus --untar
+		kubectl create namespace monitoring
+
 		cd prometheus
 		helm install prometheus . -n monitoring
 		

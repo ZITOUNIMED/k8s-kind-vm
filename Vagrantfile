@@ -13,4 +13,5 @@ Vagrant.configure("2") do |config|
 	config.vm.provision "shell", path: "workspace/scripts/install-helm.sh", args: ["false"]
 	config.vm.provision "shell", path: "workspace/scripts/create-kind-k8s-cluster.sh", args: ["false"]
 	config.vm.provision "shell", path: "workspace/scripts/config-kubectl.sh", args: ["false"]
+	config.vm.provision "shell", path: "workspace/scripts/setup-prometheus.sh", args: ["false"]
 end
