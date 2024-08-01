@@ -9,13 +9,13 @@ check_and_execute() {
     echo "Force execution enabled. Running script regardless of flag file..."
   else
     if [ -f "$FLAG_FILE" ]; then
-      echo "Script setup-docker.sh already executed. Exiting."
+      echo "Script setup docker already executed. Exiting."
       exit 0
     fi
   fi
 
   # Execute your provisioning commands
-  echo "Running script setup-docker.sh"
+  echo "Running script setup docker ..."
   
   sudo apt-get update
   sudo apt-get install ca-certificates curl
