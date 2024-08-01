@@ -6,10 +6,12 @@ metadata:
     run: nginx
   name: nginx-svc
 spec:
+  type: NodePort
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
+    nodePort: 30010
   selector:
     run: nginx
 status:

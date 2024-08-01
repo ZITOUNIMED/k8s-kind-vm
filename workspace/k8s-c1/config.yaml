@@ -5,4 +5,9 @@ name: k8s-c1
 nodes:
 - role: control-plane
 - role: worker
+  extraPortMappings:
+  - containerPort: 30010  
+    hostPort: 8081
+    listenAddress: "192.168.1.43"
+    protocol: TCP
 
