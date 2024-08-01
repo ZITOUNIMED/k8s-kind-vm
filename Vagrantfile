@@ -7,5 +7,5 @@ Vagrant.configure("2") do |config|
     end
 	
 	config.vm.synced_folder "workspace", "/home/vagrant/workspace"
-    
+    config.vm.provision "shell", path: "workspace/scripts/setup-docker.sh", args: ["false"]
 end
