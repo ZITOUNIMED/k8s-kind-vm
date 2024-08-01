@@ -9,4 +9,5 @@ Vagrant.configure("2") do |config|
 	config.vm.synced_folder "workspace", "/home/vagrant/workspace"
     config.vm.provision "shell", path: "workspace/scripts/setup-docker.sh", args: ["false"]
 	config.vm.provision "shell", path: "workspace/scripts/install-kind.sh", args: ["false"]
+	config.vm.provision "shell", path: "workspace/scripts/install-kubectl.sh", args: ["false"]
 end
