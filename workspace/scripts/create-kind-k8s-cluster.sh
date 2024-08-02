@@ -23,12 +23,40 @@ apiVersion: kind.x-k8s.io/v1alpha4
 name: k8s-c1
 nodes:
 - role: control-plane
+  extraPortMappings:
+  # load balancer
+  - containerPort: 30005  
+    hostPort: 5000
+    listenAddress: "192.168.1.40"
 - role: worker
   extraPortMappings:
-  - containerPort: 30010  
+  # monitoring ports
+  - containerPort: 30900  
+    hostPort: 9000
+    listenAddress: "192.168.1.40"
+  - containerPort: 30901  
+    hostPort: 9001
+    listenAddress: "192.168.1.40"
+  - containerPort: 30902  
+    hostPort: 9002
+    listenAddress: "192.168.1.40"
+  # servers
+  - containerPort: 30800  
+    hostPort: 8080
+    listenAddress: "192.168.1.40"
+  - containerPort: 30801  
     hostPort: 8081
     listenAddress: "192.168.1.40"
-    protocol: TCP
+  - containerPort: 30802  
+    hostPort: 8082
+    listenAddress: "192.168.1.40"
+  # clients
+  - containerPort: 30402  
+    hostPort: 4200
+    listenAddress: "192.168.1.40"
+  - containerPort: 30403  
+    hostPort: 4300
+    listenAddress: "192.168.1.40"
 ' > workspace/k8s-c1/config.yaml
 
   sudo kind delete clusters --all
