@@ -27,7 +27,7 @@ nodes:
   extraPortMappings:
   - containerPort: 30010  
     hostPort: 8081
-    listenAddress: "192.168.1.43"
+    listenAddress: "192.168.1.40"
     protocol: TCP
 ' > workspace/k8s-c1/config.yaml
 
